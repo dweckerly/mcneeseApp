@@ -21,33 +21,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="/index.php">
-                        <i class="fa fa-fw fa-table"></i>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="/">
                         <span class="nav-link-text">Event List</span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
                     <a class="nav-link" href="/createEvent.php">
-                        <i class="fa fa-fw fa-object-group"></i>
                         <span class="nav-link-text">Create Event</span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
                     <a class="nav-link" href="/generateKey.php">
-                        <i class="fa fa-fw fa-users"></i>
                         <span class="nav-link-text">New User</span>
                     </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                        <span class="nav-link-text"><?php 
+                        session_start();
+                        echo "Hello " . $_SESSION['user'];
+                        ?></span>
                 </li>
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
                     <a class="nav-link text-center" id="sidenavToggler">
-                        <i class="fa fa-fw fa-angle-left"></i>
-                        <?php 
-                        session_start();
-                        echo "Hello " . $_SESSION['user'];
-                        ?>
+                        
                     </a>
                 </li>
             </ul>
