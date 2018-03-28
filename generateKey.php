@@ -1,27 +1,26 @@
 <?php
 session_start();
-if(!$_SESSION['login'] || !isset($_SESSION['login'])) {
+if($_SESSION['login'] != TRUE) {
     header("Location: ../login.php");
     exit();
 } else {
-    include_once("../layout/header.php");
-}   // will use this to generate keys for new users to the app
-
-$key = random_int();
-include_once("../include/db.php");
-$sql = "INSERT INTO keys (signInKey) VALUES ('$key')";
-mysqli_query($conn, $sql);
-mysqli_close($conn);
+    $key = rand();
+    include_once("include/db.php");
+    $sql = "INSERT INTO userKeys (signInKey) VALUES ('$key')";
+    mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    include_once("layout/header.php");
 ?>
 
-<div class="container">
-    <h4 class="display">Use the following URL to create a new user.</h5>
-    <br />
-    <a href="mcn.96.lt/signup.php?key=<?php echo $key; ?>">mcn.96.lt/signup.php?key=<?php echo $key; ?></a>
-</div>
+    <div class="container" align="center">
+        <h4 style="margin-top: 100px;">Use the following URL to create a new user.</h4>
+        <br />
+        <a href="/signup.php?key=<?php echo $key; ?>"><code>mcn.96.lt/signup.php?key=<?php echo $key; ?></code></a>
+    </div>
 
 <?php
-include_once("../layout/footer.php");
+    include_once("layout/footer.php");
+}
 ?>
 
 

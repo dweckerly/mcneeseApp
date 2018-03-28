@@ -6,20 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>McNeese Event Parking</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
     <div class"container" align="center">
-        <form action="../util/login.util.php" metho="post">
-            <div class="form-group">
-                <label for="userName">User Name</label>
-                <input class="form-control" id="userName" name="userName" placeholder="Enter user name">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <form class="form-signin" action="util/login.util.php" method="POST">
+            <img class="mb-4" src="/img/logo-M.png" alt="" width="84" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Log In</h1>
+            <label for="inputEmail" class="sr-only">User Name</label>
+            <input type="text" name="userName" id="userName" class="form-control" placeholder="User name" required autofocus />
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required />
+            <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Log in</input>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
         </form>
     </div>
 </body>

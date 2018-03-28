@@ -1,19 +1,19 @@
 <?php
 if(!isset($_GET['key'])) {
-    header("Location: ../login.php");
+    header("Location: ../login.php?err=no");
     exit();
 } else {
     if(empty($_GET['key'])) {
-        header("Location: ../login.php");
+        header("Location: ../login.php?err=emp");
         exit();
     } else {
         $key = $_GET['key'];
-        include_once("../inculde/db.php");
-        $sql = "SELECT * FROM keys WHERE signInKey = '$key'";
+        include_once("include/db.php");
+        $sql = "SELECT * FROM userKeys WHERE signInKey = '$key'";
         $result = mysqli_query($conn, $sql);
-        $rCheck = mysqli_num_rows($result);
-        if($rCheck == 0) {
-            header("Location: ../login.php");
+        $resultCheck = mysqli_num_rows($result);
+        if($resultCheck < 1) {
+            header("Location: ../login.php?err=$key");
             exit();
         } else { 
             $row = mysqli_fetch_assoc($result);
@@ -30,23 +30,24 @@ if(!isset($_GET['key'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>McNeese Event Parking</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
     <div class"container" align="center">
-        <form action="../util/signup.util.php?key=<?php echo $key; ?>" metho="post">
-            <div class="form-group">
-                <label for="userName">User Name</label>
-                <input class="form-control" id="userName" name="userName" placeholder="Enter user name">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <form class="form-signin" action="/util/signup.util.php" method="POST">
+            <img class="mb-4" src="/img/logo-M.png" alt="" width="84" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+            <label for="userName" class="sr-only">User Name</label>
+            <input type="text" name="userName" id="userName" class="form-control" placeholder="User name" required autofocus />
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required />
+            <input type="hidden" name="key" value="<?php echo $key; ?>" />
+            <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sign Up</input>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
         </form>
+    </div>
 <?php
-if(isset($_GET['err'])){
+if(!empty($_GET['err'])){
     $err = $_GET['err'];
     if($err == 'dup') {
         $errMess = "This username already exists.";
@@ -62,7 +63,6 @@ if(isset($_GET['err'])){
 <?php
 }
 ?>
-    </div>
 </body>
 </html>
 <?php
