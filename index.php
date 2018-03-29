@@ -1,11 +1,6 @@
 <?php 
-session_start();
-if(!$_SESSION['login'] || !isset($_SESSION['login'])) {
-    header("Location: ../login.php");
-    exit();
-} else {
-    include_once("layout/header.php");
-}
+include_once("util/sessionCheck.util.php");
+include_once("layout/header.php");
 ?>
 
 

@@ -15,13 +15,7 @@ if(!isset($_GET['key'])) {
         if($resultCheck < 1) {
             header("Location: ../login.php?err=$key");
             exit();
-        } else { 
-            $row = mysqli_fetch_assoc($result);
-            mysqli_close($conn);
-            if($row['used'] == 1) {
-                header("Location: ../signup.php?err=used");
-                exit();
-            } else { ?>
+        } else { ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +37,7 @@ if(!isset($_GET['key'])) {
             <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required />
             <input type="hidden" name="key" value="<?php echo $key; ?>" />
             <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sign Up</input>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+            <p class="mt-5 mb-3 text-muted">&copy; <?php echo date('Y'); ?></p>
         </form>
     </div>
 <?php
@@ -66,7 +60,6 @@ if(!empty($_GET['err'])){
 </body>
 </html>
 <?php
-            }
         }
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 if(!isset($_POST['submit'])){
     header("Location: ../signup.php?key=sub");
     exit();
@@ -26,7 +25,7 @@ if(!isset($_POST['submit'])){
             $hash = password_hash($pwd, PASSWORD_DEFAULT);
             $sql = "INSERT INTO users (userName, password) VALUES ('$user', '$hash')";
             mysqli_query($conn, $sql);
-            $sql = "UPDATE userKeys SET used = 1 WHERE signInKey = '$key'";
+            $sql = "DELETE FROM userKeys WHERE signInKey = '$key'";
             mysqli_query($conn, $sql);
             session_start();
             $_SESSION['login'] = TRUE;

@@ -1,15 +1,11 @@
 <?php
-session_start();
-if($_SESSION['login'] != TRUE) {
-    header("Location: ../login.php");
-    exit();
-} else {
-    $key = rand();
-    include_once("include/db.php");
-    $sql = "INSERT INTO userKeys (signInKey) VALUES ('$key')";
-    mysqli_query($conn, $sql);
-    mysqli_close($conn);
-    include_once("layout/header.php");
+include_once("util/sessionCheck.util.php");
+include_once("layout/header.php");
+$key = rand();
+include_once("include/db.php");
+$sql = "INSERT INTO userKeys (signInKey) VALUES ('$key')";
+mysqli_query($conn, $sql);
+mysqli_close($conn);
 ?>
 
     <div class="container" align="center">
@@ -19,8 +15,7 @@ if($_SESSION['login'] != TRUE) {
     </div>
 
 <?php
-    include_once("layout/footer.php");
-}
+include_once("layout/footer.php");
 ?>
 
 
