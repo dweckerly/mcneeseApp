@@ -19,7 +19,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <ul class="navbar-nav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right">
                     <a class="nav-link" href="/">
                         <span class="nav-link-text">Event List</span>
@@ -35,11 +35,16 @@
                         <span class="nav-link-text">New User</span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right">
-                        <span class="nav-link-text"><?php 
+                <li class="nav-item dropdown float-right" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php 
                         session_start();
-                        echo "Hello " . $_SESSION['user'];
-                        ?></span>
+                        echo $_SESSION['user'];
+                        ?>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="../util/logout.util.php">Log Out</a>
+                    </div>
                 </li>
             </ul>
             <ul class="navbar-nav sidenav-toggler">

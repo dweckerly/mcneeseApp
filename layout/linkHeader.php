@@ -12,7 +12,7 @@
 <body class="fixed-nav sticky-footer">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="logo-M.png" width="40" height="30" class="d-inline-block align-top" alt="">&nbsp&nbspMcNeese Event Parking Form</a>
+            <img src="../img/logo-M.png" width="40" height="30" class="d-inline-block align-top" alt="">&nbsp&nbspMcNeese Event Parking Form</a>
     </nav>
     <div class='container'style="margin-top: 60px;">
     <div class="content-wrapper">
