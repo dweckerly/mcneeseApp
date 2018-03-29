@@ -13,9 +13,19 @@ if(!isset($_GET['key']) || empty($_GET['key'])) {
         exit();
     } else {
         $rows = mysqli_fetch_assoc($result);
-        $id = $rows['eID'];
-        mysqli_close($conn);
-        include_once("../layout/linkHeader.php");
+        $currentTime = time();
+        $timeout = 60*60*24;
+        $time = $rows['createTime'];
+        if($currentTime > ($time + $timeout)) {
+            $sql = "DELETE FROM eventKets WHERE eKey = '$key'";
+            mysqli_query($conn, $sql);
+            mysqli_close($conn);
+            header("Location: invalid.php");
+            exit();
+        } else {
+            $id = $rows['eID'];
+            mysqli_close($conn);
+            include_once("../layout/linkHeader.php");
     ?>
         <h1>McNeese Special Event Parking Pass Form</h1>
         <p>Please complete the following form to receive a parking pass for this event.</p>
@@ -36,6 +46,7 @@ if(!isset($_GET['key']) || empty($_GET['key'])) {
         </form>
 
     <?php
+        }
     }
 }
 include_once("../layout/footer.php");
