@@ -22,6 +22,9 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
             <h2 class='card-title'><?php echo $row["name"]; ?></h2>
             <h4 class='card-subtitle mb-2 text-muted'><?php echo $row["location"]; ?></h4>
             <p class='card-text'><?php echo $row['date']; ?> at <?php echo $row["time"]; ?></p>
+            <a class="btn btn-info" href="eventInvite.php?id=<?php echo $id; ?>">Invite</a>
+            <a class="btn btn-warning" href="editEvent.php?id=<?php echo $id; ?>">Edit</a>
+            <a class="btn btn-danger" href="deleteEvent.php?id=<?php echo $id; ?>">Delete</a>
         </div>
     </div>
 </div>
@@ -29,8 +32,9 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
     $sql = "SELECT * FROM attendees WHERE eid = '$id'";
     $result = mysqli_query($conn, $sql);
 ?>
-    <h4 class="display-4 text-center">Registered Parking Passes</h4>
+    <h4 class="text-center" style="margin-top: 50px;">Registered Parking Passes</h4>
     <div class="card-body container">
+        <a class="btn btn-info" href="util/createCsv.util.php?id=<?php echo $id; ?>">Export CSV</a>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>

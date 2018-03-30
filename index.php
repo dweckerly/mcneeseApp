@@ -9,15 +9,15 @@ $time = date("m-d-Y h:i:sa");
 ?>
 <div class="container-fluid" style="margin-top:100px;">
 <div class="card-body container" >
-    <a href="deleteAll.php" class="btn btn-warning">Delete All Events</a>
+    <a href="deleteAll.php" class="btn btn-warning float-right">Delete All Events</a>
     <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table id="eventTable" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Event</th>
-                    <th>Location</th>
-                    <th>Date</th>
-                    <th>Time</th>
+                    <th onclick="sortTable(0)">Event</th>
+                    <th onclick="sortTable(1)">Location</th>
+                    <th onclick="sortTable(2)">Date</th>
+                    <th onclick="sortTable(3)">Time</th>
                     <th>Functions</th>
                     <th>Invite</th>
                 </tr>
