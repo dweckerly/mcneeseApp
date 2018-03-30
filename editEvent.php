@@ -19,7 +19,7 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
 <div class="container">
     <h1 style="margin-top:100px;">Create New Event</h1>
     <form action="util/updateEvent.util.php" method="POST">
-        <input type="hidden" name="id" value="<?php echo $rows['id']; ?>" />
+        <input type="hidden" name="id" value="<?php echo $rows['ID']; ?>" />
         <div class="form-group">
             <label for="eventName">Event Name</label>
             <input required="true" type="text" id="eventName" name="eventName" class="form-control" value="<?php echo $rows['name']; ?>">

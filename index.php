@@ -7,7 +7,9 @@ $result = mysqli_query($conn, $sql);
 
 $time = date("m-d-Y h:i:sa");
 ?>
-<div class="card-body container" style="margin-top:100px;">
+<div class="container-fluid" style="margin-top:100px;">
+<div class="card-body container" >
+    <a href="deleteAll.php" class="btn btn-warning">Delete All Events</a>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
@@ -40,6 +42,7 @@ if ($result->num_rows > 0) {
             </tbody>
         </table>
     </div>
+</div>
 </div>
 <div class='card-footer small text-muted'>Queried on <?php echo $time; ?></div>
 </div>

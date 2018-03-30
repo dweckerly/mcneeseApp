@@ -1,7 +1,7 @@
 <?php
 include_once("sessionCheck.util.php");
 if(!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: error.php");
+    header("Location: ../");
     exit();
 } else {
     $id = $_GET['id'];
@@ -14,7 +14,7 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
         header("Location: ../");
         exit();
     } else {
-        $sql = "DELETE FROM events WHERE ID='$id";
+        $sql = "DELETE FROM events WHERE ID='$id'";
         mysqli_query($conn, $sql);
         mysqli_close($conn);
         header("Location: ../");

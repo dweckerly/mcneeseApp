@@ -37,7 +37,7 @@ if(!isset($_GET['key'])) {
             <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required />
             <input type="hidden" name="key" value="<?php echo $key; ?>" />
             <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sign Up</input>
-            <p class="mt-5 mb-3 text-muted">&copy; <?php echo date('Y'); ?></p>
+            <p class="mt-5 mb-3 text-muted">&copy; McNeese State University <?php echo date('Y'); ?></p>
         </form>
     </div>
 <?php

@@ -21,7 +21,7 @@ if(!isset($_POST['submit'])){
         mysqli_query($conn, $sql);
         mysqli_close($conn);
 
-        header("Location: event?id=$id");
+        header("Location: ../event.php?id=$id");
         exit();
     }
 }

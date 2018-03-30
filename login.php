@@ -18,7 +18,7 @@
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" name="password" id="password" class="form-control" placeholder="Password" required />
             <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" />
-            <p class="mt-5 mb-3 text-muted">&copy; <?php echo date('Y'); ?></p>
+            <p class="mt-5 mb-3 text-muted">&copy; McNeese State University <?php echo date('Y'); ?></p>
         </form>
     </div>
 </body>
