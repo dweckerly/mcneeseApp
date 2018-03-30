@@ -12,7 +12,7 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
     if($rCheck == 0) {
         header("Location: /");
     } else {
-        include_once("layout/header.php");
+        include_once("layout/eHeader.php");
         $row = mysqli_fetch_assoc($result);
 ?>
 <h4 class="display-4 text-center" style="margin-top:100px;">Event Info</h4>
@@ -34,7 +34,7 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
 ?>
     <h4 class="text-center" style="margin-top: 50px;">Registered Parking Passes</h4>
     <div class="card-body container">
-        <a class="btn btn-info" href="util/createCsv.util.php?id=<?php echo $id; ?>">Export CSV</a>
+    <a href='#' class="btn btn-info" onclick='downloadCSV({ filename: "attendees-list.csv" });'>Download CSV</a>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
@@ -60,6 +60,25 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
     </table>
 </div>
 </div>
+<script type="text/javascript"> 
+    var json = [
+        {
+<?php
+    $sql = "SELECT * FROM attendees WHERE eid = '$id'";
+    $result = mysqli_query($conn, $sql);
+    if ($result->num_rows > 0) {
+        while($rows = $result->fetch_assoc()) {   
+?> 
+            Name: "<?php echo $rows['name']; ?>",
+            Company: "<?php echo $rows['company']; ?>"
+        },
+<?php
+    }?>
+    ];<?php
+}
+?>
+</script>
+<script src="../js/csv.js"></script>
 <?php
     }
 }
