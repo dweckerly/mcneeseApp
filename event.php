@@ -62,13 +62,13 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
 </div>
 <script type="text/javascript"> 
     var json = [
-        {
 <?php
     $sql = "SELECT * FROM attendees WHERE eid = '$id'";
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
         while($rows = $result->fetch_assoc()) {   
 ?> 
+        {
             Name: "<?php echo $rows['name']; ?>",
             Company: "<?php echo $rows['company']; ?>"
         },

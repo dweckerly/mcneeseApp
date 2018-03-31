@@ -14,10 +14,10 @@ $time = date("m-d-Y h:i:sa");
         <table id="eventTable" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th onclick="sortTable(0)">Event</th>
-                    <th onclick="sortTable(1)">Location</th>
-                    <th onclick="sortTable(2)">Date</th>
-                    <th onclick="sortTable(3)">Time</th>
+                    <th onclick="sortTable(0)" class="sortable">Event</th>
+                    <th onclick="sortTable(1)" class="sortable">Location</th>
+                    <th onclick="sortTable(2)" class="sortable">Date</th>
+                    <th onclick="sortTable(3)" class="sortable">Time</th>
                     <th>Functions</th>
                     <th>Invite</th>
                 </tr>
