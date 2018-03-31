@@ -17,7 +17,7 @@ if(!isset($_GET['key']) || empty($_GET['key'])) {
         $timeout = 60*60*24;
         $time = $rows['createTime'];
         if($currentTime > ($time + $timeout)) {
-            $sql = "DELETE FROM eventKets WHERE eKey = '$key'";
+            $sql = "DELETE FROM eventKeys WHERE eKey = '$key'";
             mysqli_query($conn, $sql);
             mysqli_close($conn);
             header("Location: invalid.php");
