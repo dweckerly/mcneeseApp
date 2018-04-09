@@ -24,15 +24,21 @@ if(!isset($_POST['submit'])){
             $_SESSION['eName'] = $rows['name'];
             $_SESSION['location'] = $rows['location'];
             $_SESSION['date'] = $rows['date'];
-            $_SESSION['time'] = $rows['time'];
+            $_SESSION['sTime'] = $rows['startTime'];
+            $_SESISON['eTime'] = $rows['endTime'];
+            $count = $rows['count']; 
+            $count = $count + 1;
             $_SESSION['name'] = mysqli_real_escape_string($conn, $_POST['name']);
             $_SESSION['company'] = mysqli_real_escape_string($conn, $_POST['company']);
+
+            $sql = "UPDATE events SET count = $count WHERE ID = '$id'";
+            mysqli_query($conn, $sql);
 
             $name = mysqli_real_escape_string($conn, $_POST['name']);
             $company = mysqli_real_escape_string($conn, $_POST['company']);
             $event = $rows['name'];
 
-            $sql ="INSERT INTO attendees (name, company, event, eid) VALUES ('$name', '$company', '$event', '$id')";
+            $sql ="INSERT INTO attendees (name, company, event, eid, count) VALUES ('$name', '$company', '$event', '$id', '$count')";
             mysqli_query($conn, $sql);
             mysqli_close($conn);
             header("Location: ../pdf/parkingPass.php");

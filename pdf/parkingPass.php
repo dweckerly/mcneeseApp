@@ -19,6 +19,7 @@ class PDF extends FPDF
     function Header()
     {
         // Logo
+        $this->Cell(0, 20, 'SPECAIL PARKING', 0, 1, 'C');
         $this->Image('../img/logo.png', 48, 12, 200);
         // Line break
         $this->Ln(56);
@@ -39,16 +40,13 @@ class PDF extends FPDF
 $pdf = new PDF('L');
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont('Times','',36);
-$pdf->Cell(0, 20, 'Event Parking', 0, 1, 'C');
 $pdf->SetFont('Times','',48);
 $pdf->Cell(0, 20, $company, 0, 1, 'C');
-$pdf->Cell(0, 20, $name, 0, 1, 'C');
 $pdf->SetFont('Times','',36);
 $pdf->Cell(0, 20, $event, 0, 1, 'C');
 $pdf->SetFont('Times','',28);
 $pdf->Cell(0, 15, $location, 0, 1, 'C');
-$pdf->Cell(0, 15, ''. $_SESSION["date"]. ' at '. $_SESSION["time"]. '', 0, 1, 'C');
+$pdf->Cell(0, 15, ''. $_SESSION["date"]. ' from '. $_SESSION["sTime"]. ' to ' . $_SESSION["eTime"] . '', 0, 1, 'C');
 $pdf->Output();
 
 session_destroy();
