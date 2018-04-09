@@ -15,9 +15,10 @@ if(!isset($_POST['submit'])){
         $name = mysqli_real_escape_string($conn, $_POST['eventName']);
         $loc = mysqli_real_escape_string($conn, $_POST['location']);
         $date = mysqli_real_escape_string($conn, $_POST['date']);
-        $time = mysqli_real_escape_string($conn, $_POST['time']);
+        $sTime = mysqli_real_escape_string($conn, $_POST['sTime']);
+        $eTime = mysqli_real_escape_string($conn, $_POST['eTime']);
 
-        $sql = "UPDATE events SET name='$name', location='$loc', date='$date', time='$time' WHERE ID = '$id'";
+        $sql = "UPDATE events SET name='$name', location='$loc', date='$date', startTime='$sTime', endTime='eTime' WHERE ID = '$id'";
         mysqli_query($conn, $sql);
         mysqli_close($conn);
 

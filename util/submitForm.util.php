@@ -23,16 +23,14 @@ if(!isset($_POST['submit'])){
             session_start();
             $_SESSION['eName'] = $rows['name'];
             $_SESSION['location'] = $rows['location'];
-            $date = $row['date']; 
-            $d = new DateTime($date);
-            $fDate = $d->format('l, F jS, Y');
-            $_SESSION['date'] = $fDate;
+            $_SESSION['date'] = $row['date']; 
             $_SESSION['sTime'] = $rows['startTime'];
             $_SESISON['eTime'] = $rows['endTime'];
             $count = $rows['count']; 
             $count = $count + 1;
             $_SESSION['name'] = mysqli_real_escape_string($conn, $_POST['name']);
             $_SESSION['company'] = mysqli_real_escape_string($conn, $_POST['company']);
+            $_SESSION['count'] = $count;
 
             $sql = "UPDATE events SET count = $count WHERE ID = '$id'";
             mysqli_query($conn, $sql);

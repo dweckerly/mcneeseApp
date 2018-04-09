@@ -14,6 +14,9 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
     } else {
         include_once("layout/eHeader.php");
         $row = mysqli_fetch_assoc($result);
+        $date = $row['date']; 
+        $d = new DateTime($date);
+        $fDate = $d->format('l, F jS, Y');
 ?>
 <h4 class="display-4 text-center" style="margin-top:100px;">Event Info</h4>
 <div class="container" align="center">
@@ -21,7 +24,7 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
         <div class='card-body'>
             <h2 class='card-title'><?php echo $row["name"]; ?></h2>
             <h4 class='card-subtitle mb-2 text-muted'><?php echo $row["location"]; ?></h4>
-            <p class='card-text'><?php echo $row['date']; ?> at <?php echo $row["time"]; ?></p>
+            <p class='card-text'><?php echo $fDate; ?> from <?php echo $row["startTime"] . " to " . $row["endTime"]; ?></p>
             <a class="btn btn-info" href="eventInvite.php?id=<?php echo $id; ?>">Invite</a>
             <a class="btn btn-warning" href="editEvent.php?id=<?php echo $id; ?>">Edit</a>
             <a class="btn btn-danger" href="deleteEvent.php?id=<?php echo $id; ?>">Delete</a>

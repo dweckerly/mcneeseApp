@@ -34,12 +34,12 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
                 <input required="true" type="date" id="date" name="date" class="form-control" value="<?php echo $rows['date']; ?>">
             </div>                
             <div class="form-group col-md-3">
-                <label for="time"> Start Time</label>
-                <input required="true" type="time" id="time" name="time" class="form-control" value="<?php echo $rows['startTime']; ?>">
+                <label for="time">Start Time</label>
+                <input required="true" type="time" id="time" name="sTime" class="form-control" value="<?php echo $rows['startTime']; ?>">
             </div>
             <div class="form-group col-md-3">
-                <label for="time"> End Time</label>
-                <input required="true" type="time" id="time" name="time" class="form-control" value="<?php echo $rows['endTime']; ?>">
+                <label for="time">End Time</label>
+                <input required="true" type="time" id="time" name="eTime" class="form-control" value="<?php echo $rows['endTime']; ?>">
             </div>
         </div>
         <button type="submit" name='submit' class="btn btn-primary">Submit</button>
