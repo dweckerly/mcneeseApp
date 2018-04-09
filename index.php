@@ -25,13 +25,16 @@ $time = date("m-d-Y h:i:sa");
             <tbody>
 <?php 
 if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) { 
+    while($row = $result->fetch_assoc()) {
+        $date = $row['date']; 
+        $d = new DateTime($date);
+        $fDate = $d->format('l, F jS, Y');
 ?>
         <tr>
             <td><a href='event.php?id=<?php echo $row["ID"]; ?>'><?php echo $row["name"]; ?></a></td>
             <td><?php echo $row["location"]; ?></td>
-            <td><?php echo $row["date"]; ?></td>
-            <td><?php echo $row["time"]; ?></td>
+            <td><?php echo $fDate; ?></td>
+            <td><?php echo $row["startTime"] . ' to ' . $row['endTime']; ?></td>
             <td><a href='editEvent.php?id=<?php echo $row["ID"]; ?>'>Edit</a> | <a href='deleteEvent.php?id=<?php echo $row["ID"]; ?>'>Delete</a></td>
             <td><a class="btn btn-info" href='eventInvite.php?id=<?php echo $row["ID"]; ?>'>Invite</a></td>
         </tr>

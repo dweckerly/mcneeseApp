@@ -19,7 +19,6 @@ class PDF extends FPDF
     function Header()
     {
         // Logo
-        $this->Cell(0, 20, 'SPECAIL PARKING', 0, 1, 'C');
         $this->Image('../img/logo.png', 48, 12, 200);
         // Line break
         $this->Ln(56);
