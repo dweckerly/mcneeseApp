@@ -29,12 +29,14 @@ if ($result->num_rows > 0) {
         $date = $row['date']; 
         $d = new DateTime($date);
         $fDate = $d->format('l, F jS, Y');
+        $sTime = date("h:i A", strtotime($row["startTime"]));
+        $eTime = date("h:i A", strtotime($row['endTime']));
 ?>
         <tr>
             <td><a href='event.php?id=<?php echo $row["ID"]; ?>'><?php echo $row["name"]; ?></a></td>
             <td><?php echo $row["location"]; ?></td>
             <td><?php echo $fDate; ?></td>
-            <td><?php echo $row["startTime"] . ' to ' . $row['endTime']; ?></td>
+            <td><?php echo $sTime . ' to ' . $eTime; ?></td>
             <td><a href='editEvent.php?id=<?php echo $row["ID"]; ?>'>Edit</a> | <a href='deleteEvent.php?id=<?php echo $row["ID"]; ?>'>Delete</a></td>
             <td><a class="btn btn-info" href='eventInvite.php?id=<?php echo $row["ID"]; ?>'>Invite</a></td>
         </tr>

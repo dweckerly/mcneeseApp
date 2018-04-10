@@ -23,9 +23,9 @@ if(!isset($_POST['submit'])){
             session_start();
             $_SESSION['eName'] = $rows['name'];
             $_SESSION['location'] = $rows['location'];
-            $_SESSION['date'] = $row['date']; 
+            $_SESSION['date'] = $rows['date']; 
             $_SESSION['sTime'] = $rows['startTime'];
-            $_SESISON['eTime'] = $rows['endTime'];
+            $_SESSION['eTime'] = $rows['endTime'];
             $count = $rows['count']; 
             $count = $count + 1;
             $_SESSION['name'] = mysqli_real_escape_string($conn, $_POST['name']);

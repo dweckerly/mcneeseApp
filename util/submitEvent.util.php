@@ -17,6 +17,8 @@ if(!isset($_POST['submit'])){
         $sTime = mysqli_real_escape_string($conn, $_POST['sTime']);
         $eTime = mysqli_real_escape_string($conn, $_POST['eTime']);
 
+        $date = date("m/d/Y", strtotime($date));
+
         $sql = "INSERT INTO events (name, location, date, startTime, endTime) VALUES ('$name', '$loc', '$date', '$sTime', '$eTime')";
         mysqli_query($conn, $sql);
         mysqli_close($conn);
