@@ -12,7 +12,18 @@ if(!isset($_SESSION["company"]) || !isset($_SESSION["name"])) {
     $name = $_SESSION["name"];
     $event = $_SESSION["eName"];
     $location = $_SESSION["location"]; 
-    $fDate = date('l F jS, Y', strtotime($_SESSION['date']));
+
+
+    if(isset($_SESSION['eDate'])) {
+        $sDate = $_SESSION['sDate']; 
+        $eDate = $_SESSION['eDate'];
+        $fDate = date('l, F jS', strtotime($sDate)) . " - " . date('l, F jS, Y', strtotime($eDate));
+        $_SESSION['date'] = date("m/d/Y", strtotime($_SESSION['eDate']));;
+    } else {
+        $fDate = date('l F jS, Y', strtotime($_SESSION['sDate']));
+        $_SESSION['date'] = date("m/d/Y", strtotime($_SESSION['sDate']));
+    }
+    
     $sTime = date('h:i a', strtotime($_SESSION['sTime']));
     $eTime = date('h:i a', strtotime($_SESSION['eTime']));
 }

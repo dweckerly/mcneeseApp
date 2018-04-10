@@ -14,8 +14,13 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
     } else {
         include_once("layout/eHeader.php");
         $row = mysqli_fetch_assoc($result);
-        $date = $row['date']; 
-        $fDate = date('l, F jS, Y', strtotime($date));
+        $sDate = $row['startDate']; 
+        $eDate = $row['endDate'];
+        if($eDate == "") {
+            $fDate = date('l, F jS, Y', strtotime($sDate));
+        } else {
+            $fDate = date('l, F jS', strtotime($sDate)) . " - " . date('l, F jS, Y', strtotime($eDate));
+        }
 ?>
 <h4 class="display-4 text-center" style="margin-top:100px;">Event Info</h4>
 <div class="container" align="center">

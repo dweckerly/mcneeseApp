@@ -14,11 +14,14 @@ if(!isset($_POST['submit'])){
         include_once("../include/db.php");
         $name = mysqli_real_escape_string($conn, $_POST['eventName']);
         $loc = mysqli_real_escape_string($conn, $_POST['location']);
-        $date = mysqli_real_escape_string($conn, $_POST['date']);
+        $sDate = mysqli_real_escape_string($conn, $_POST['sDate']);
+        $sDate = date("m/d/Y", strtotime($sDate));
+        $eDate = mysqli_real_escape_string($conn, $_POST['eDate']);
+        $eDate = date("m/d/Y", strtotime($eDate));
         $sTime = mysqli_real_escape_string($conn, $_POST['sTime']);
         $eTime = mysqli_real_escape_string($conn, $_POST['eTime']);
 
-        $sql = "UPDATE events SET name='$name', location='$loc', date='$date', startTime='$sTime', endTime='eTime' WHERE ID = '$id'";
+        $sql = "UPDATE events SET name='$name', location='$loc', startDate='$sDate', endDate='$eDate',  startTime='$sTime', endTime='eTime' WHERE ID = '$id'";
         mysqli_query($conn, $sql);
         mysqli_close($conn);
 

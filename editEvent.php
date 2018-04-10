@@ -31,8 +31,12 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="date">Date</label>
-                <input required="true" type="date" id="date" name="date" class="form-control" value="<?php echo date('Y-m-d', strtotime($rows['date'])); ?>">
-            </div>                
+                <input required="true" type="date" id="date" name="sDate" class="form-control" value="<?php echo date('Y-m-d', strtotime($rows['startDate'])); ?>">
+            </div>      
+            <div class="form-group col-md-6">
+                <label for="date">Date</label>
+                <input required="true" type="date" id="date" name="eDate" class="form-control" value="<?php echo date('Y-m-d', strtotime($rows['endDate'])); ?>">
+            </div>           
             <div class="form-group col-md-3">
                 <label for="time">Start Time</label>
                 <input required="true" type="time" id="time" name="sTime" class="form-control" value="<?php echo $rows['startTime']; ?>">

@@ -26,9 +26,13 @@ $time = date("m-d-Y h:i:sa");
 <?php 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        $date = $row['date']; 
-        $d = new DateTime($date);
-        $fDate = $d->format('l, F jS, Y');
+        $sDate = $row['startDate']; 
+        $eDate = $row['endDate'];
+        if($eDate == "") {
+            $fDate = date('l, F jS, Y', strtotime($sDate));
+        } else {
+            $fDate = date('l, F jS', strtotime($sDate)) . " - " . date('l, F jS, Y', strtotime($eDate));
+        }
         $sTime = date("h:i A", strtotime($row["startTime"]));
         $eTime = date("h:i A", strtotime($row['endTime']));
 ?>

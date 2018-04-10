@@ -6,20 +6,25 @@ if(!isset($_POST['submit'])){
     header("Location: ../createEvent.php?err=noSet");
     exit();
 } else {
-    if(empty($_POST['date']) || empty($_POST['sTime'])) {
+    if(empty($_POST['sDate']) || empty($_POST['sTime'])) {
         header("Location: ../createEvent.php?err=noTime");
         exit();
     } else {
         include_once("../include/db.php");
         $name = mysqli_real_escape_string($conn, $_POST['eventName']);
         $loc = mysqli_real_escape_string($conn, $_POST['location']);
-        $date = mysqli_real_escape_string($conn, $_POST['date']);
+        $sDate = mysqli_real_escape_string($conn, $_POST['sDate']);
+        if(!empty($_POST['eDate'])){
+            $eDate = mysqli_real_escape_string($conn, $_POST['eDate']);
+        } else {
+            $eDate = "";
+        }
         $sTime = mysqli_real_escape_string($conn, $_POST['sTime']);
         $eTime = mysqli_real_escape_string($conn, $_POST['eTime']);
 
         $date = date("m/d/Y", strtotime($date));
 
-        $sql = "INSERT INTO events (name, location, date, startTime, endTime) VALUES ('$name', '$loc', '$date', '$sTime', '$eTime')";
+        $sql = "INSERT INTO events (name, location, startDate, endDate, startTime, endTime) VALUES ('$name', '$loc', '$sDate', '$eDate', '$sTime', '$eTime')";
         mysqli_query($conn, $sql);
         mysqli_close($conn);
 

@@ -23,7 +23,10 @@ if(!isset($_POST['submit'])){
             session_start();
             $_SESSION['eName'] = $rows['name'];
             $_SESSION['location'] = $rows['location'];
-            $_SESSION['date'] = $rows['date']; 
+            $_SESSION['sDate'] = $rows['startDate']; 
+            if($rows['endDate'] != "") {
+                $_SESSION['eDate'] = $rows['endDate']; 
+            }
             $_SESSION['sTime'] = $rows['startTime'];
             $_SESSION['eTime'] = $rows['endTime'];
             $count = $rows['count']; 
