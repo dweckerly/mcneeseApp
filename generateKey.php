@@ -11,7 +11,7 @@ mysqli_close($conn);
     <div class="container" align="center">
         <h4 style="margin-top: 100px;">Use the following URL to create a new user.</h4>
         <br />
-        <a href="/signup.php?key=<?php echo $key; ?>"><code>mcn.96.lt/signup.php?key=<?php echo $key; ?></code></a>
+        <a href="/signup.php?key=<?php echo $key; ?>"><code>https://testurl.tech/signup.php?key=<?php echo $key; ?></code></a>
     </div>
 
 <?php

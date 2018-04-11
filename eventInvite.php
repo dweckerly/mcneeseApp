@@ -20,7 +20,7 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
             This link will expire in 24 hours.
         </div>
         <br />
-        <a href="/form/index.php?key=<?php echo $key; ?>"><code>mcn.96.lt/form/index.php?key=<?php echo $key; ?></code></a>
+        <a href="/form/index.php?key=<?php echo $key; ?>"><code>https://testurl.tech/form/index.php?key=<?php echo $key; ?></code></a>
     </div>
 <?php
 }
