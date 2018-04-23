@@ -24,6 +24,8 @@ if(!isset($_POST['submit'])){
                 session_start();
                 $_SESSION['login'] = TRUE;
                 $_SESSION['user'] = $_POST['userName'];
+                $_SESSION['uid'] = $row['uID'];
+                $_SESSION['super'] = $row['super'];
                 header("Location: ../");
                 exit();
             } else {

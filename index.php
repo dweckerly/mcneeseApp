@@ -2,7 +2,12 @@
 include_once("util/sessionCheck.util.php");
 include_once("layout/header.php");
 include_once("include/db.php");
-$sql = "SELECT * FROM events";
+if($_SESSION['super'] == 1) {
+    $sql = "SELECT * FROM events";
+} else {
+    $uid = $_SESSION['uid'];
+    $sql = "SELECT * FROM events WHERE uID = '$uid";
+}
 $result = mysqli_query($conn, $sql);
 
 $time = date("m-d-Y h:i:sa");
