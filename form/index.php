@@ -14,7 +14,7 @@ if(!isset($_GET['key']) || empty($_GET['key'])) {
     } else {
         $rows = mysqli_fetch_assoc($result);
         $currentTime = time();
-        $timeout = 60*60*24;
+        $timeout = 60*60*24*5;
         $time = $rows['createTime'];
         if($currentTime > ($time + $timeout)) {
             $sql = "DELETE FROM eventKeys WHERE eKey = '$key'";
@@ -24,13 +24,21 @@ if(!isset($_GET['key']) || empty($_GET['key'])) {
             exit();
         } else {
             $id = $rows['eID'];
+            $sql = "DELETE FROM eventKeys WHERE eKey = '$key'";
+            mysqli_query($conn, $sql);
+            $sql = "SELECT * FROM events WHERE ID = '$id'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
             mysqli_close($conn);
             include_once("../layout/linkHeader.php");
+
+    
     ?>
         <h1>McNeese Special Event Parking Pass Form</h1>
+        <h2>Event: <?php echo $row['name'];?></h2>
         <p>Please complete the following form to receive a parking pass for this event.</p>
         <div class='alert alert-warning' role='alert'>
-            Clicking 'Submit' will produce your parking pass. This link will expire in 24 hours.
+            This link is only good once. Clicking 'Submit' will produce your parking pass. 
         </div>
         <form action='../util/submitForm.util.php' method='POST'>
             <div class='form-group'>

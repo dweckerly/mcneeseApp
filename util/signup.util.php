@@ -11,6 +11,7 @@ if(!isset($_POST['submit'])){
         exit();
     } else {
         $key = $_POST['key'];
+        $super = $_POST['super'];
         include_once("../include/db.php");
         $user = mysqli_real_escape_string($conn, $_POST['userName']);
         $pwd = mysqli_real_escape_string($conn, $_POST['password']);
@@ -23,7 +24,7 @@ if(!isset($_POST['submit'])){
             exit();
         } else {
             $hash = password_hash($pwd, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO users (userName, password) VALUES ('$user', '$hash')";
+            $sql = "INSERT INTO users (userName, password, super) VALUES ('$user', '$hash', '$super')";
             mysqli_query($conn, $sql);
             $sql = "DELETE FROM userKeys WHERE signInKey = '$key'";
             mysqli_query($conn, $sql);

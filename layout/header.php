@@ -31,11 +31,16 @@
                         <span class="nav-link-text">Create Event</span>
                     </a>
                 </li>
+                <?php 
+            if($_SESSION['super'] == 1) {?>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right">
-                    <a class="nav-link" href="/generateKey.php">
+                    <a class="nav-link" href="/createUser.php">
                         <span class="nav-link-text">New User</span>
                     </a>
                 </li>
+                <?php
+            }
+            ?>
                 <li class="nav-item dropdown float-right" data-toggle="tooltip" data-placement="right">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php 

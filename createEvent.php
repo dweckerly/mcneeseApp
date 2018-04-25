@@ -17,6 +17,7 @@ include_once("layout/header.php");
             <div class="form-group col-md-6">
                 <label for="date">Start Date</label>
                 <input required="true" type="date" id="date" name="sDate" class="form-control">
+                <small class="form-text text-muted">Example - 01/31/2020</small>
             </div>        
             <div class="form-group col-md-6">
                 <label for="date">End Date</label>
@@ -26,6 +27,7 @@ include_once("layout/header.php");
             <div class="form-group col-md-3">
                 <label for="time">Start Time</label>
                 <input required="true" type="time" id="time" name="sTime" class="form-control">
+                <small class="form-text text-muted">Example - 04:30 PM</small>
             </div>
             <div class="form-group col-md-3">
                 <label for="time">End Time</label>

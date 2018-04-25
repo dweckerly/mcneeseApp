@@ -15,7 +15,11 @@ if(!isset($_GET['key'])) {
         if($resultCheck < 1) {
             header("Location: ../login.php?err=$key");
             exit();
-        } else { ?>
+        } else { 
+            $row = mysqli_fetch_assoc($result);
+            $super = $row['super'];
+            mysqli_close($conn);
+            ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +40,7 @@ if(!isset($_GET['key'])) {
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required />
             <input type="hidden" name="key" value="<?php echo $key; ?>" />
+            <input type="hidden" name="super" value="<?php echo $super; ?>" />
             <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sign Up</input>
             <p class="mt-5 mb-3 text-muted">&copy; McNeese State University <?php echo date('Y'); ?></p>
         </form>

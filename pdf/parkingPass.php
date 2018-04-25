@@ -46,7 +46,7 @@ class PDF extends FPDF
         // Arial italic 8
         $this->SetFont('Arial','I',8);
         // Page number
-        $this->Cell(0,10,'Printed on '. date("m/d/Y"). ' - Valid through '. $_SESSION['date'] . ' : ' . $_SESSION['count'],0,0,'C');
+        $this->Cell(0,10,'Printed on '. date("m/d/Y"). ' - Permit Number : ' . $_SESSION['count'],0,0,'C');
     }
 }   
 // Instantiation of inherited class

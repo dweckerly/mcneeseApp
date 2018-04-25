@@ -23,8 +23,8 @@ if(!isset($_POST['submit'])){
         $eTime = mysqli_real_escape_string($conn, $_POST['eTime']);
 
         $date = date("m/d/Y", strtotime($date));
-
-        $sql = "INSERT INTO events (name, location, startDate, endDate, startTime, endTime) VALUES ('$name', '$loc', '$sDate', '$eDate', '$sTime', '$eTime')";
+        $uid = $_SESSION['uid'];
+        $sql = "INSERT INTO events (name, location, startDate, endDate, startTime, endTime, createdBy) VALUES ('$name', '$loc', '$sDate', '$eDate', '$sTime', '$eTime', '$uid')";
         mysqli_query($conn, $sql);
         mysqli_close($conn);
 
