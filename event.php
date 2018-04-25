@@ -81,7 +81,11 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
             Permit: "<?php echo $rows['count']; ?>",
             Name: "<?php echo $rows['name']; ?>",
             Company: "<?php echo $rows['company']; ?>",
-            Event: "<?php echo $rows['event']; ?>"
+            Event: "<?php echo $rows['event']; ?>",
+            StartDate: "<?php echo $rows['startDate']; ?>",
+            EndDate: "<?php echo $rows['endDate']; ?>",
+            StartTime: "<?php echo $rows['startTime']; ?>",
+            EndTime: "<?php echo $rows['endTime']; ?>"
         },
 <?php
     }?>
@@ -89,7 +93,7 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
 }
 ?>
 </script>
-<script src="../js/csv.js"></script>
+<script src="js/csv.js"></script>
 <?php
     }
 }

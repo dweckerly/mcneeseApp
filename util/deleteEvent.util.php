@@ -14,7 +14,7 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
         header("Location: ../");
         exit();
     } else {
-        $sql = "DELETE FROM events WHERE ID='$id'";
+        $sql = "UPDATE events SET hide=1 WHERE ID = '$id'";
         mysqli_query($conn, $sql);
         mysqli_close($conn);
         header("Location: ../");

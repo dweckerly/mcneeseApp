@@ -24,11 +24,17 @@ if(!isset($_POST['submit'])){
             $_SESSION['eName'] = $rows['name'];
             $_SESSION['location'] = $rows['location'];
             $_SESSION['sDate'] = $rows['startDate']; 
+            $sDate = $_SESSION['sDate'];
             if($rows['endDate'] != "") {
-                $_SESSION['eDate'] = $rows['endDate']; 
+                $_SESSION['eDate'] = $rows['endDate'];
+                $eDate = $_SESSION['eDate']; 
+            } else {
+                $eDate = "";
             }
             $_SESSION['sTime'] = $rows['startTime'];
+            $sTime = $_SESSION['sTime'];
             $_SESSION['eTime'] = $rows['endTime'];
+            $eTime = $_SESSION['eTime'];
             $count = $rows['count']; 
             $count = $count + 1;
             $_SESSION['name'] = mysqli_real_escape_string($conn, $_POST['name']);
@@ -42,7 +48,7 @@ if(!isset($_POST['submit'])){
             $company = mysqli_real_escape_string($conn, $_POST['company']);
             $event = $rows['name'];
 
-            $sql ="INSERT INTO attendees (name, company, event, eid, count) VALUES ('$name', '$company', '$event', '$id', '$count')";
+            $sql ="INSERT INTO attendees (name, company, event, eid, count, startDate, endDate, startTime, endTime) VALUES ('$name', '$company', '$event', '$id', '$count', '$sDate', '$eDate', '$sTime', '$eTime')";
             mysqli_query($conn, $sql);
             mysqli_close($conn);
             header("Location: ../pdf/parkingPass.php");

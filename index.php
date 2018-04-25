@@ -3,10 +3,10 @@ include_once("util/sessionCheck.util.php");
 include_once("layout/header.php");
 include_once("include/db.php");
 if($_SESSION['super'] == 1) {
-    $sql = "SELECT * FROM events";
+    $sql = "SELECT * FROM events WHERE hide = 0";
 } else {
     $uid = $_SESSION['uid'];
-    $sql = "SELECT * FROM events WHERE createdBy = '$uid";
+    $sql = "SELECT * FROM events WHERE createdBy = '$uid AND hide = 0";
 }
 $result = mysqli_query($conn, $sql);
 
@@ -29,8 +29,11 @@ $time = date("m-d-Y h:i:sa");
             </thead>
             <tbody>
 <?php 
+
 if ($result->num_rows > 0) {
+    $ids = array();
     while($row = $result->fetch_assoc()) {
+        array_push($ids, $row['ID']);
         $sDate = $row['startDate']; 
         $eDate = $row['endDate'];
         if($eDate == "") {
@@ -60,6 +63,33 @@ if ($result->num_rows > 0) {
 </div>
 <div class='card-footer small text-muted'>Queried on <?php echo $time; ?></div>
 </div>
+<script type="text/javascript"> 
+    var json = [
+<?php
+    foreach($ids as $x => $x_val) {
+        $sql = "SELECT * FROM attendees WHERE eid = '$x_val'";
+        $result = mysqli_query($conn, $sql);
+        if ($result->num_rows > 0) {
+            while($rows = $result->fetch_assoc()) {   
+?> 
+        {
+            Permit: "<?php echo $rows['count']; ?>",
+            Name: "<?php echo $rows['name']; ?>",
+            Company: "<?php echo $rows['company']; ?>",
+            Event: "<?php echo $rows['event']; ?>",
+            StartDate: "<?php echo $rows['startDate']; ?>",
+            EndDate: "<?php echo $rows['endDate']; ?>",
+            StartTime: "<?php echo $rows['startTime']; ?>",
+            EndTime: "<?php echo $rows['endTime']; ?>"
+        },
+<?php
+        }
+    }?>
+    ];<?php
+}
+?>
+</script>
+<script src="js/csv.js"></script>
 <?php 
 mysqli_close($conn);
 include_once("layout/footer.php");
