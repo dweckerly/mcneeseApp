@@ -15,6 +15,7 @@ $time = date("m-d-Y h:i:sa");
 ?>
 <div class="container-fluid" style="margin-top:100px;">
 <div class="card-body container" >
+    <a href='#' class="btn btn-info" onclick='downloadCSV({ filename: "attendees-list.csv" });'>Produce CSV for All Displayed Events</a>
     <a href="deleteAll.php" class="btn btn-warning float-right">Delete All Events</a>
     <div class="table-responsive">
         <table id="eventTable" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -85,10 +86,9 @@ if ($result->num_rows > 0) {
         },
 <?php
         }
-    }?>
-    ];<?php
-}
-?>
+    }
+}?>
+    ];
 </script>
 <script src="js/csv.js"></script>
 <?php 
