@@ -2,11 +2,12 @@
 include_once("util/sessionCheck.util.php");
 include_once("layout/header.php");
 include_once("include/db.php");
+session_start();
 if($_SESSION['super'] == 1) {
     $sql = "SELECT * FROM events WHERE hide = 0";
 } else {
     $uid = $_SESSION['uid'];
-    $sql = "SELECT * FROM events WHERE createdBy = '$uid AND hide = 0";
+    $sql = "SELECT * FROM events WHERE createdBy = '$uid' AND hide = 0";
 }
 $result = mysqli_query($conn, $sql);
 
