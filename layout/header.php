@@ -31,6 +31,11 @@
                         <span class="nav-link-text">Create Event</span>
                     </a>
                 </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right">
+                    <a class="nav-link" href="/produceReport.php">
+                        <span class="nav-link-text">Produce Report</span>
+                    </a>
+                </li>
                 <?php 
             if($_SESSION['super'] == 1) {?>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right">

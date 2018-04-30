@@ -41,7 +41,7 @@ if(!isset($_GET['id']) || empty($_GET['id'])) {
 ?>
     <h4 class="text-center" style="margin-top: 50px;">Registered Parking Passes</h4>
     <div class="card-body container">
-    <a href='#' class="btn btn-info" onclick='downloadCSV({ filename: "attendees-list.csv" });'>Download CSV</a>
+    <a href='#' class="btn btn-info" onclick='downloadCSV({ filename: "attendees-list.csv" });'>Produce CSV for this event</a>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
