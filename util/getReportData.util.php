@@ -36,12 +36,12 @@ var json= [
         },
         <?php
         }
+        ?>
+    ];
+    </script>
+    <script src="js/csv.js"></script>
+        <?php
     } else {
         echo "No attendees found.";
     }
-    ?>
-];
-</script>
-<script src="js/csv.js"></script>
-    <?php
 }
