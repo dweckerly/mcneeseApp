@@ -17,7 +17,7 @@ while($row = $result->fetch_assoc()) {
 }
 foreach($ids as $id) {
     $sql = "SELECT * FROM attendees WHERE eid = '$id'";
-    $result = mysqli_query($conn, $sql);
+    $result = mysqli_queryx($conn, $sql);
     if($result->num_rows > 0) {?>
 <script id="json-data" style="display:none;">
 var json= [
