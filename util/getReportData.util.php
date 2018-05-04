@@ -15,14 +15,13 @@ $ids = array();
 while($row = $result->fetch_assoc()) {
     array_push($ids, $row['ID']);
 }
-?>
-<script id="json-data" style="display:none;">
-var json= [
-<?php
 foreach($ids as $id) {
     $sql = "SELECT * FROM attendees WHERE eid = '$id'";
     $result = mysqli_query($conn, $sql);
-    if($result->num_rows > 0) {
+    if($result->num_rows > 0) {?>
+<script id="json-data" style="display:none;">
+var json= [
+    <?php
         while($rows = $result->fetch_assoc()) {   
             ?> 
         {
