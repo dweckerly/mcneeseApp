@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
 <script src="js/jquery.js"></script>
 <div class="container" style="margin-top:100px;">
 <div class="alert alert-info" role="alert">
-Clicking 'Submit' will produce a CSV containing attendee information for the selected time.
+Select a year and month as they appear. Clicking 'Submit' will produce a CSV containing attendee information for the selected time.
 </div>
 <form>
 <div class="form-row">
@@ -46,3 +46,6 @@ Clicking 'Submit' will produce a CSV containing attendee information for the sel
 }
 ?>
 <script src="js/report.js"></script>
+<?php 
+mysqli_close($conn);
+?>

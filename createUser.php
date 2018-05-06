@@ -14,4 +14,6 @@ if($_SESSION['super'] == 1) {
 } else {
     header("Location: /");
 }
+mysqli_close($conn);
+include_once("layout/footer.php");
 ?>
