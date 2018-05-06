@@ -36,7 +36,6 @@ $uMonths = array_unique($months);
             $('#append-month').html('Please wait...');
             $.get("util/getReportData.util.php?yr=" + yr + "&month=" + month, function(data) {
                 $('#append-month').html(data);
-                downloadCSV({ filename: "attendees-list.csv" });
             });
         });
     </script>

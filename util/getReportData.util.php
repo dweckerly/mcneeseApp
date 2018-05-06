@@ -19,6 +19,7 @@ foreach($ids as $id) {
     $sql = "SELECT * FROM attendees WHERE eid = '$id'";
     $result = mysqli_queryx($conn, $sql);
     if($result->num_rows > 0) {?>
+    <button class="btn btn-info" onclick='downloadCSV({ filename: "attendees-list.csv" });'>Submit</button>
 <script id="json-data" style="display:none;">
 var json= [
     <?php
